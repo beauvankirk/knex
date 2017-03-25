@@ -41,6 +41,8 @@
     "mocha": "^3.1.2",
     "mysql": "^2.6.2",
     "mysql2": "^1.1.1",
+    "odbc": "^1.1.2",
+    "oracledb": "^1.13.0",
     "pg": "^6.1.0",
     "pg-query-stream": "^1.0.0",
     "rimraf": "2.x",
