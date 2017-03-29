@@ -699,19 +699,22 @@ module.exports = function(knex) {
             .then(function() {
               return knex.schema.createTable('batchInsertDuplicateKey', function (table) {
                 table.string('col');
-                table.unique('col');
+                table.primary('col');
               });
             })
             .then(function () {
               var rows = [{'col': 'a'}, {'col': "a"}];
               return knex.batchInsert('batchInsertDuplicateKey', rows, rows.length);
             })
+            .then(function() {
+              return reject(new Error('Should not reach this point'))
+            })
             .catch(function (error) {
-              //Should reach this point before timeout of 2s
+              //Should reach this point before timeout of 10s
               expect(error.message.toLowerCase()).to.include('batchinsertduplicatekey');
               resolve(error);
             });
-        }).timeout(2000);
+        }).timeout(10000);
       });
 
       it('knex.batchInsert with specified transaction', function() {
@@ -726,10 +729,8 @@ module.exports = function(knex) {
 
       it('transaction.batchInsert using specified transaction', function() {
         return knex.transaction(function(tr) {
-          tr.batchInsert('BatchInsert', items, 30)
+          return tr.batchInsert('BatchInsert', items, 30)
           .returning(['Col1', 'Col2'])
-          .then(tr.commit)
-          .catch(tr.rollback);
         })
       });
 
