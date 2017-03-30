@@ -1,5 +1,5 @@
 {
-  "name": "knex",
+  "name": "@beauvankirk/knex",
   "version": "0.12.9",
   "description": "A batteries-included SQL query & schema builder for Postgres, MySQL and SQLite3 and the Browser",
   "main": "knex.js",
@@ -21,7 +21,9 @@
     "safe-buffer": "^5.0.1",
     "tildify": "~1.0.0",
     "uuid": "^3.0.0",
-    "v8flags": "^2.0.2",
+    "v8flags": "^2.0.2"
+  },
+  "devDependencies": {
     "JSONStream": "^1.0.3",
     "async": "^0.9.0",
     "babel-cli": "^6.11.4",
@@ -41,8 +43,6 @@
     "mocha": "^3.1.2",
     "mysql": "^2.6.2",
     "mysql2": "^1.1.1",
-    "odbc": "^1.1.2",
-    "oracledb": "^1.13.0",
     "pg": "^6.1.0",
     "pg-query-stream": "^1.0.0",
     "rimraf": "2.x",
@@ -55,6 +55,13 @@
     "through": "^2.3.4"
   },
   "buildDependencies": [
+    "babel-cli",
+    "babel-plugin-add-module-exports",
+    "babel-plugin-lodash",
+    "babel-plugin-transform-runtime",
+    "babel-preset-es2015",
+    "babel-preset-es2015-loose",
+    "rimraf"
   ],
   "scripts": {
     "build": "npm run babel",
@@ -74,7 +81,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/tgriesser/knex.git"
+    "url": "git://github.com/beauvankirk/knex.git"
   },
   "keywords": [
     "sql",
